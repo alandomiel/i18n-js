@@ -820,7 +820,7 @@ describe("I18n.js", function(){
 });
 
 // Setup test to ensure a preset I18n.locale passes correctly
-var I18n = {}
+var I18n = {};
 I18n.locale = "en_IE";
 
 load("vendor/assets/javascripts/i18n.js");
@@ -828,5 +828,16 @@ load("vendor/assets/javascripts/i18n.js");
 describe("I18n.js when I18n.locale has already been set", function(){
   specify("with custom locale", function(){
     expect(I18n.locale).toBeEqualTo("en_IE");
+  });
+});
+
+// Setup test to ensure no i18n.locale has been passed
+var I18n = {};
+
+load("vendor/assets/javascripts/i18n.js");
+
+describe("I18n.js when no i18n.locale is passed", function(){
+  specify("locale to be null", function(){
+    expect(I18n.locale).toBeEqualTo(null);
   });
 });
