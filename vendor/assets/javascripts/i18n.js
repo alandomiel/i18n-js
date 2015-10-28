@@ -319,8 +319,9 @@ I18n.toNumber = function(number, options) {
     {precision: 3, separator: ".", delimiter: ",", strip_insignificant_zeros: false}
   );
 
+  // removed Math.abs conversion - see https://github.com/fnando/i18n-js/issues/365
   var negative = number < 0
-    , string = Math.abs(number).toFixed(options.precision).toString()
+    , string = BigDecimal.toFixed(String(number), options.precision)
     , parts = string.split(".")
     , precision
     , buffer = []
